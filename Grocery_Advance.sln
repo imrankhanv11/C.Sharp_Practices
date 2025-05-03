@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grocery_Advance", "Grocery_Advance\Grocery_Advance.csproj", "{1A7B13B8-9F23-4782-B360-B344F6532360}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class_Object", "..\Class_Object\Class_Object.csproj", "{C1169D2E-00FD-4DED-B384-3A76A4372FC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM_Advance_Oops", "ATM_Advance_Oops\ATM_Advance_Oops.csproj", "{CC9AF614-E286-4A32-B6A5-A3E49EDCC362}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{1A7B13B8-9F23-4782-B360-B344F6532360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A7B13B8-9F23-4782-B360-B344F6532360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A7B13B8-9F23-4782-B360-B344F6532360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1169D2E-00FD-4DED-B384-3A76A4372FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1169D2E-00FD-4DED-B384-3A76A4372FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1169D2E-00FD-4DED-B384-3A76A4372FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1169D2E-00FD-4DED-B384-3A76A4372FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC9AF614-E286-4A32-B6A5-A3E49EDCC362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC9AF614-E286-4A32-B6A5-A3E49EDCC362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC9AF614-E286-4A32-B6A5-A3E49EDCC362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC9AF614-E286-4A32-B6A5-A3E49EDCC362}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
