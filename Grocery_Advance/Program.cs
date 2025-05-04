@@ -27,8 +27,8 @@ class Item
 
 class Supermarket
 {
-    private Dictionary<int, Item> items = new Dictionary<int, Item>();
-    private const string ownerPassword = "admin123";
+     protected Dictionary<int, Item> items = new Dictionary<int, Item>();
+    
 
     public Supermarket()
     {
@@ -54,17 +54,21 @@ class Supermarket
 
             string choiceInput = Console.ReadLine();
 
+            customer obj = new customer();
             switch (choiceInput)
             {
+                
                 case "1":
-                    CustomerSection();
+                    obj.CustomerSection();
                     if (check())
                     {
                         return;
                     }
                     break;
                 case "2":
-                    if (VerifyOwner())
+                    admin admin = new admin();
+
+                    if (admin.VerifyOwner())
                     Console.WriteLine("\n+-----------------------+");
                     Console.WriteLine("|     Admin Panel       |");
                     Console.WriteLine("+-----------------------+");
@@ -79,10 +83,10 @@ class Supermarket
                     switch (admininput)
                     {
                         case "1":
-                            AddItem();
+                            admin.AddItem();
                             break;
                         case "2":
-                            RemoveItem();
+                            admin.RemoveItem();
                             break;
                         case "3":
                             Console.WriteLine("Thank you");
@@ -102,101 +106,6 @@ class Supermarket
             }
         }
     }
-
-    private bool VerifyOwner()
-    {
-        while (true)
-        {
-            Console.Write("Enter owner password: ");
-            string password = Console.ReadLine();
-            if (password == ownerPassword)
-            {
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Incorrect password.");
-                Console.Write("Do you want to retry password (yes / no): ");
-                string pass = Console.ReadLine().Trim().ToLower();
-                if (pass != "yes")
-                {
-                    return false; 
-                }
-            }
-        }
-    }
-
-    private void AddItem()
-    {
-        int code;
-        while (true)
-        {
-            Console.Write("Enter new item code: ");
-            if (int.TryParse(Console.ReadLine(), out code))
-            {
-                if (items.ContainsKey(code))
-                {
-                    Console.WriteLine("Item code already exists.");
-                    return;
-                }
-                break; 
-            }
-            else
-            {
-                Console.WriteLine("Invalid code input. Please enter a valid number.");
-            }
-        }
-
-        Console.Write("Enter item name: ");
-        string name = Console.ReadLine();
-
-        double price;
-        while (true)
-        {
-            Console.Write("Enter item price: ");
-            if (double.TryParse(Console.ReadLine(), out price))
-            {
-                break; 
-            }
-            else
-            {
-                Console.WriteLine("Invalid price input. Please enter a valid number.");
-            }
-        }
-        items[code] = new Item(code, name, price);
-        Console.WriteLine($"{name} added successfully with code {code} and price ${price:F2}.");
-    }
-    private void RemoveItem()
-    {
-        while (true)
-        {
-            Console.Write("Enter item code to remove: ");
-            if (int.TryParse(Console.ReadLine(), out int code))
-            {
-                if (items.Remove(code))
-                {
-                    Console.WriteLine($"Item with code {code} removed successfully.");
-                    break; 
-                }
-                else
-                {
-                    Console.Write("Item code not found. Try again? (Y/N): ");
-                    string choice = Console.ReadLine().Trim().ToUpper();
-                    if (choice != "Y")
-                    {
-                        Console.WriteLine("Exiting removal process.");
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid code input. Please enter a valid number.");
-            }
-        }
-    }
-
-
     public bool check()
     {
         Console.Write("Do you want to continue (yes/no) : ");
@@ -207,10 +116,11 @@ class Supermarket
         }
         return true;
     }
-
-    private int billNumber = 1001; 
-
-    private void CustomerSection()
+}
+class customer : Supermarket
+{
+    private int billNumber = 1001;
+    public void CustomerSection()
     {
         Dictionary<int, int> userPurchases = new Dictionary<int, int>();
 
@@ -220,7 +130,7 @@ class Supermarket
 
         foreach (var item in items.Values)
         {
-            Console.WriteLine($"| {item.Code,-5} | {item.Name,-20} | ${item.Price,-6} |");
+            Console.WriteLine($"| {item.Code,-5} | {item.Name,-20} | {item.Price,-6} |");
         }
 
         Console.WriteLine("+--------+----------------------+--------+");
@@ -332,6 +242,102 @@ class Supermarket
         Console.WriteLine("+----------------------+----------+----------+");
         Console.WriteLine("       Thank you for shopping with us.        ");
         Console.WriteLine("----------------------------------------------");
+    }
+}
+
+class admin : Supermarket
+{
+    private const string ownerPassword = "admin123";
+    public bool VerifyOwner()
+    {
+        while (true)
+        {
+            Console.Write("Enter owner password: ");
+            string password = Console.ReadLine();
+            if (password == ownerPassword)
+            {
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Incorrect password.");
+                Console.Write("Do you want to retry password (yes / no): ");
+                string pass = Console.ReadLine().Trim().ToLower();
+                if (pass != "yes")
+                {
+                    return false;
+                }
+            }
+        }
+    }
+    public void RemoveItem()
+    {
+        while (true)
+        {
+            Console.Write("Enter item code to remove: ");
+            if (int.TryParse(Console.ReadLine(), out int code))
+            {
+                if (items.Remove(code))
+                {
+                    Console.WriteLine($"Item with code {code} removed successfully.");
+                    break;
+                }
+                else
+                {
+                    Console.Write("Item code not found. Try again? (Y/N): ");
+                    string choice = Console.ReadLine().Trim().ToUpper();
+                    if (choice != "Y")
+                    {
+                        Console.WriteLine("Exiting removal process.");
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid code input. Please enter a valid number.");
+            }
+        }
+    }
+    public void AddItem()
+    {
+        int code;
+        while (true)
+        {
+            Console.Write("Enter new item code: ");
+            if (int.TryParse(Console.ReadLine(), out code))
+            {
+                if (items.ContainsKey(code))
+                {
+                    Console.WriteLine("Item code already exists.");
+                    return;
+                }
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid code input. Please enter a valid number.");
+            }
+        }
+
+        Console.Write("Enter item name: ");
+        string name = Console.ReadLine();
+
+        double price;
+        while (true)
+        {
+            Console.Write("Enter item price: ");
+            if (double.TryParse(Console.ReadLine(), out price))
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid price input. Please enter a valid number.");
+            }
+        }
+        items[code] = new Item(code, name, price);
+        Console.WriteLine($"{name} added successfully with code {code} and price ${price:F2}.");
     }
 }
 
