@@ -27,7 +27,7 @@ class Item
 
 class Supermarket
 {
-     protected Dictionary<int, Item> items = new Dictionary<int, Item>();
+     protected static Dictionary<int, Item> items = new Dictionary<int, Item>();
     
 
     public Supermarket()
@@ -69,12 +69,14 @@ class Supermarket
                     admin admin = new admin();
 
                     if (admin.VerifyOwner())
+                    
                     Console.WriteLine("\n+-----------------------+");
                     Console.WriteLine("|     Admin Panel       |");
                     Console.WriteLine("+-----------------------+");
                     Console.WriteLine("| 1 | Add item          |");
                     Console.WriteLine("| 2 | Remove item       |");
-                    Console.WriteLine("| 3 | Exit              |");
+                    Console.WriteLine("| 3 | View All          |");
+                    Console.WriteLine("| 4 | Exit              |");
                     Console.WriteLine("+-----------------------+");
                     Console.Write("Enter your choice: ");
 
@@ -89,9 +91,14 @@ class Supermarket
                             admin.RemoveItem();
                             break;
                         case "3":
+                            admin.ViewItem();
+                            break;
+                        case "4":
+                            
                             Console.WriteLine("Thank you");
                             break;
                         default:
+                            
                             Console.WriteLine("Invalid choice. Please try again.");
                             break;
                     }
@@ -338,6 +345,19 @@ class admin : Supermarket
         }
         items[code] = new Item(code, name, price);
         Console.WriteLine($"{name} added successfully with code {code} and price ${price:F2}.");
+    }
+    public void ViewItem()
+    {
+        Console.WriteLine("\n+--------+----------------------+--------+");
+        Console.WriteLine("| Code   | Name                 | Price  |");
+        Console.WriteLine("+--------+----------------------+--------+");
+
+        foreach (var item in items.Values)
+        {
+            Console.WriteLine($"| {item.Code,-5} | {item.Name,-20} | {item.Price,-6} |");
+        }
+
+        Console.WriteLine("+--------+----------------------+--------+");
     }
 }
 
