@@ -27,15 +27,17 @@ class Item
 
 class Supermarket
 {
-     protected static Dictionary<int, Item> items = new Dictionary<int, Item>();
-    
+    protected static Dictionary<int, Item> items = new Dictionary<int, Item>();
 
     public Supermarket()
     {
         // Default items
-        items[101] = new Item(101, "Apple", 1.5);
-        items[102] = new Item(102, "Banana", 0.7);
-        items[103] = new Item(103, "Carrot", 1.2);
+        if (items.Count == 0)
+        {
+            items[101] = new Item(101, "Apple", 1.5);
+            items[102] = new Item(102, "Banana", 0.7);
+            items[103] = new Item(103, "Carrot", 1.2);
+        }
     }
 
     public void ShowMenu()
@@ -53,56 +55,57 @@ class Supermarket
             Console.Write("Enter your choice: ");
 
             string choiceInput = Console.ReadLine();
-
             customer obj = new customer();
+
             switch (choiceInput)
             {
-                
                 case "1":
                     obj.CustomerSection();
                     if (check())
-                    {
                         return;
-                    }
                     break;
+
                 case "2":
                     admin admin = new admin();
-
                     if (admin.VerifyOwner())
-                    
-                    Console.WriteLine("\n+-----------------------+");
-                    Console.WriteLine("|     Admin Panel       |");
-                    Console.WriteLine("+-----------------------+");
-                    Console.WriteLine("| 1 | Add item          |");
-                    Console.WriteLine("| 2 | Remove item       |");
-                    Console.WriteLine("| 3 | View All          |");
-                    Console.WriteLine("| 4 | Exit              |");
-                    Console.WriteLine("+-----------------------+");
-                    Console.Write("Enter your choice: ");
-
-                    string admininput = Console.ReadLine();
-
-                    switch (admininput)
                     {
-                        case "1":
-                            admin.AddItem();
-                            break;
-                        case "2":
-                            admin.RemoveItem();
-                            break;
-                        case "3":
-                            admin.ViewItem();
-                            break;
-                        case "4":
-                            
-                            Console.WriteLine("Thank you");
-                            break;
-                        default:
-                            
-                            Console.WriteLine("Invalid choice. Please try again.");
-                            break;
+                        while (true)
+                        {
+                            Console.WriteLine("\n+-----------------------+");
+                            Console.WriteLine("|     Admin Panel       |");
+                            Console.WriteLine("+-----------------------+");
+                            Console.WriteLine("| 1 | Add item          |");
+                            Console.WriteLine("| 2 | Remove item       |");
+                            Console.WriteLine("| 3 | View All          |");
+                            Console.WriteLine("| 4 | Exit              |");
+                            Console.WriteLine("+-----------------------+");
+                            Console.Write("Enter your choice: ");
+
+                            string admininput = Console.ReadLine();
+
+                            switch (admininput)
+                            {
+                                case "1":
+                                    admin.AddItem();
+                                    break;
+                                case "2":
+                                    admin.RemoveItem();
+                                    break;
+                                case "3":
+                                    admin.ViewItem();
+                                    break;
+                                case "4":
+                                    Console.WriteLine("Exiting Admin Panel.");
+                                    goto EndAdminLoop;
+                                default:
+                                    Console.WriteLine("Invalid choice. Please try again.");
+                                    break;
+                            }
+                        }
+                    EndAdminLoop:;
                     }
                     break;
+
                 case "3":
                     Console.WriteLine("Thank you! Visit again.");
                     return;
@@ -113,20 +116,19 @@ class Supermarket
             }
         }
     }
+
     public bool check()
     {
         Console.Write("Do you want to continue (yes/no) : ");
         string input = Console.ReadLine().Trim().ToLower();
-        if(input == "yes")
-        {
-            return false;
-        }
-        return true;
+        return input != "yes";
     }
 }
+
 class customer : Supermarket
 {
-    private int billNumber = 1001;
+    private static int billNumber = 1001;
+
     public void CustomerSection()
     {
         Dictionary<int, int> userPurchases = new Dictionary<int, int>();
@@ -158,8 +160,8 @@ class customer : Supermarket
 
                 if (userPurchases.ContainsKey(code))
                 {
-                    Console.WriteLine($"This item is already in your cart with quantity {userPurchases[code]}.");
-                    Console.Write("Do you want to add more? (yes/no): ");
+                    Console.WriteLine($"Already in cart with quantity {userPurchases[code]}.");
+                    Console.Write("Add more? (yes/no): ");
                     string response = Console.ReadLine().ToLower();
 
                     if (response == "yes")
@@ -171,7 +173,7 @@ class customer : Supermarket
                             if (int.TryParse(Console.ReadLine(), out quantity) && quantity > 0)
                             {
                                 userPurchases[code] += quantity;
-                                Console.WriteLine($"Added {quantity} more {product.Name}(s) to your cart.");
+                                Console.WriteLine($"Added {quantity} more {product.Name}(s).");
                                 break;
                             }
                             else
@@ -179,10 +181,6 @@ class customer : Supermarket
                                 Console.WriteLine("Invalid quantity. Please enter a positive number.");
                             }
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Skipping addition of this item.");
                     }
                 }
                 else
@@ -210,8 +208,6 @@ class customer : Supermarket
             }
         }
 
-
-
         Console.Write("\nEnter your name: ");
         string customerName = Console.ReadLine();
 
@@ -222,13 +218,13 @@ class customer : Supermarket
             mobileNumber = Console.ReadLine();
             if (Regex.IsMatch(mobileNumber, @"^\d{10}$"))
                 break;
-            Console.WriteLine("Invalid mobile number. Please enter exactly 10 digits.");
+            Console.WriteLine("Invalid mobile number.");
         }
 
-        Console.WriteLine("----------------- Final Bill -----------------");
-        Console.WriteLine($" Bill Number         :         {billNumber++}");
-        Console.WriteLine($" Customer Name       :         {customerName}");
-        Console.WriteLine($" Mobile Number       :         {mobileNumber}");
+        Console.WriteLine("\n----------------- Final Bill -----------------");
+        Console.WriteLine($" Bill Number         : {billNumber++}");
+        Console.WriteLine($" Customer Name       : {customerName}");
+        Console.WriteLine($" Mobile Number       : {mobileNumber}");
         Console.WriteLine("+----------------------+----------+----------+");
         Console.WriteLine("| Item Name            | Quantity | Subtotal |");
         Console.WriteLine("+----------------------+----------+----------+");
@@ -255,6 +251,7 @@ class customer : Supermarket
 class admin : Supermarket
 {
     private const string ownerPassword = "admin123";
+
     public bool VerifyOwner()
     {
         while (true)
@@ -262,21 +259,15 @@ class admin : Supermarket
             Console.Write("Enter owner password: ");
             string password = Console.ReadLine();
             if (password == ownerPassword)
-            {
                 return true;
-            }
-            else
-            {
-                Console.WriteLine("Incorrect password.");
-                Console.Write("Do you want to retry password (yes / no): ");
-                string pass = Console.ReadLine().Trim().ToLower();
-                if (pass != "yes")
-                {
-                    return false;
-                }
-            }
+
+            Console.WriteLine("Incorrect password.");
+            Console.Write("Retry? (yes/no): ");
+            if (Console.ReadLine().Trim().ToLower() != "yes")
+                return false;
         }
     }
+
     public void RemoveItem()
     {
         while (true)
@@ -284,16 +275,17 @@ class admin : Supermarket
             Console.Write("Enter item code to remove: ");
             if (int.TryParse(Console.ReadLine(), out int code))
             {
-                if (items.Remove(code))
+                if (items.ContainsKey(code))
                 {
-                    Console.WriteLine($"Item with code {code} removed successfully.");
+                    string name = items[code].Name;
+                    items.Remove(code);
+                    Console.WriteLine($"Item '{name}' with code {code} removed successfully.");
                     break;
                 }
                 else
                 {
-                    Console.Write("Item code not found. Try again? (Y/N): ");
-                    string choice = Console.ReadLine().Trim().ToUpper();
-                    if (choice != "Y")
+                    Console.Write("Item not found. Try again? (Y/N): ");
+                    if (Console.ReadLine().Trim().ToUpper() != "Y")
                     {
                         Console.WriteLine("Exiting removal process.");
                         break;
@@ -302,10 +294,11 @@ class admin : Supermarket
             }
             else
             {
-                Console.WriteLine("Invalid code input. Please enter a valid number.");
+                Console.WriteLine("Invalid input. Please enter a valid item code.");
             }
         }
     }
+
     public void AddItem()
     {
         int code;
@@ -323,7 +316,7 @@ class admin : Supermarket
             }
             else
             {
-                Console.WriteLine("Invalid code input. Please enter a valid number.");
+                Console.WriteLine("Invalid input.");
             }
         }
 
@@ -335,17 +328,15 @@ class admin : Supermarket
         {
             Console.Write("Enter item price: ");
             if (double.TryParse(Console.ReadLine(), out price))
-            {
                 break;
-            }
-            else
-            {
-                Console.WriteLine("Invalid price input. Please enter a valid number.");
-            }
+
+            Console.WriteLine("Invalid input.");
         }
+
         items[code] = new Item(code, name, price);
-        Console.WriteLine($"{name} added successfully with code {code} and price ${price:F2}.");
+        Console.WriteLine($"Item '{name}' added with code {code} and price ${price:F2}.");
     }
+
     public void ViewItem()
     {
         Console.WriteLine("\n+--------+----------------------+--------+");
@@ -360,4 +351,3 @@ class admin : Supermarket
         Console.WriteLine("+--------+----------------------+--------+");
     }
 }
-
