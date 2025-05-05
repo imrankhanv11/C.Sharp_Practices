@@ -27,6 +27,7 @@ namespace Employee_Mangemnet
 
             while (true)
             {
+                Console.Write("Enter the Operation code : ");
                 string MainInput = Console.ReadLine();
                 switch (MainInput)
                 {
@@ -63,113 +64,128 @@ namespace Employee_Mangemnet
         };
         public void addPermanentEmp()
         {
-            Console.Write("Enter the Employee Name: ");
-            string EmpName = Console.ReadLine();
-
-            Console.Write("Enter the Department Name: ");
-            string Department = Console.ReadLine();
-
-            double Salary;
-            while (true)
+            string check;
+            do
             {
-                Console.Write("Enter the Salary: ");
-                try
+                Console.Write("Enter the Employee Name: ");
+                string EmpName = Console.ReadLine();
+
+                Console.Write("Enter the Department Name: ");
+                string Department = Console.ReadLine();
+
+                double Salary;
+                while (true)
                 {
-                    Salary = Convert.ToDouble(Console.ReadLine());
-                    break; 
+                    Console.Write("Enter the Salary: ");
+                    try
+                    {
+                        Salary = Convert.ToDouble(Console.ReadLine());
+                        break;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid numeric salary.");
+                    }
                 }
-                catch (FormatException)
+
+                Console.Write("Enter the Joining Date (yyyy-mm-dd): ");
+                DateTime JoiningDate;
+                while (!DateTime.TryParse(Console.ReadLine(), out JoiningDate))
                 {
-                    Console.WriteLine("Invalid input. Please enter a valid numeric salary.");
+                    Console.Write("Invalid date. Please enter again (yyyy-mm-dd): ");
                 }
-            }
 
-            Console.Write("Enter the Joining Date (yyyy-mm-dd): ");
-            DateTime JoiningDate;
-            while (!DateTime.TryParse(Console.ReadLine(), out JoiningDate))
-            {
-                Console.Write("Invalid date. Please enter again (yyyy-mm-dd): ");
-            }
+                Console.Write("Has Insurance Coverage (true/false): ");
+                bool HasInsuranceCoverage;
+                while (!bool.TryParse(Console.ReadLine(), out HasInsuranceCoverage))
+                {
+                    Console.Write("Invalid input. Please enter 'true' or 'false': ");
+                }
 
-            Console.Write("Has Insurance Coverage (true/false): ");
-            bool HasInsuranceCoverage;
-            while (!bool.TryParse(Console.ReadLine(), out HasInsuranceCoverage))
-            {
-                Console.Write("Invalid input. Please enter 'true' or 'false': ");
-            }
+                Console.Write("Enter Leave Encashment Balance: ");
+                int LeaveEncashmentBalance;
+                while (!int.TryParse(Console.ReadLine(), out LeaveEncashmentBalance))
+                {
+                    Console.Write("Invalid number. Please enter again: ");
+                }
 
-            Console.Write("Enter Leave Encashment Balance: ");
-            int LeaveEncashmentBalance;
-            while (!int.TryParse(Console.ReadLine(), out LeaveEncashmentBalance))
-            {
-                Console.Write("Invalid number. Please enter again: ");
-            }
+                PermanentEmployee newEmp = new PermanentEmployee(empIdCounter, EmpName, Department, Salary, JoiningDate, HasInsuranceCoverage, LeaveEncashmentBalance);
 
-            PermanentEmployee newEmp = new PermanentEmployee(empIdCounter, EmpName, Department, Salary, JoiningDate, HasInsuranceCoverage, LeaveEncashmentBalance);
+                EmpDetails[empIdCounter] = newEmp;
+                Console.WriteLine($"Permanent Employee Added Successfully with ID: {empIdCounter}");
 
-            EmpDetails[empIdCounter] = newEmp;
-            Console.WriteLine($"Permanent Employee Added Successfully with ID: {empIdCounter}");
-
-            empIdCounter++; 
+                empIdCounter++;
+                Console.Write("Do you want to add another New Employee (yes/no) : ");
+                check = Console.ReadLine().Trim().ToLower();
+            } while (check == "yes");
+             
         }
 
         public void addContractEmp()
         {
-            Console.Write("Enter the Employee Name: ");
-            string EmpName = Console.ReadLine();
-
-            Console.Write("Enter the Department Name: ");
-            string Department = Console.ReadLine();
-
-            double Salary;
-            while (true)
+            string check;
+            do
             {
-                Console.Write("Enter the Salary: ");
-                try
-                {
-                    Salary = Convert.ToDouble(Console.ReadLine());
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Invalid input. Please enter a valid numeric salary.");
-                }
-            }
+                Console.Write("Enter the Employee Name: ");
+                string EmpName = Console.ReadLine();
 
-            int ContractDurationMonths;
-            while (true)
-            {
-                Console.Write("Enter Contract Duration in Months: ");
-                try
-                {
-                    ContractDurationMonths = Convert.ToInt32(Console.ReadLine());
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Invalid input. Please enter a valid number.");
-                }
-            }
+                Console.Write("Enter the Department Name: ");
+                string Department = Console.ReadLine();
 
-            bool IsRemote;
-            while (true)
-            {
-                Console.Write("Is the Employee Working Remotely? (true/false): ");
-                if (bool.TryParse(Console.ReadLine(), out IsRemote))
+                double Salary;
+                while (true)
                 {
-                    break;
+                    Console.Write("Enter the Salary: ");
+                    try
+                    {
+                        Salary = Convert.ToDouble(Console.ReadLine());
+                        break;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid numeric salary.");
+                    }
                 }
-                else
+
+                int ContractDurationMonths;
+                while (true)
                 {
-                    Console.WriteLine("Invalid input. Please enter 'true' or 'false'.");
+                    Console.Write("Enter Contract Duration in Months: ");
+                    try
+                    {
+                        ContractDurationMonths = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid number.");
+                    }
                 }
-            }
 
-            ContractEmployee newEmp = new ContractEmployee(empIdCounter, EmpName, Department, Salary, ContractDurationMonths, IsRemote);
-            EmpDetails[empIdCounter] = newEmp;
-            Console.WriteLine($"Contract Employee Added Successfully with ID: {empIdCounter}");
+                bool IsRemote;
+                while (true)
+                {
+                    Console.Write("Is the Employee Working Remotely? (true/false): ");
+                    if (bool.TryParse(Console.ReadLine(), out IsRemote))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter 'true' or 'false'.");
+                    }
+                }
 
-            empIdCounter++; 
+                ContractEmployee newEmp = new ContractEmployee(empIdCounter, EmpName, Department, Salary, ContractDurationMonths, IsRemote);
+                EmpDetails[empIdCounter] = newEmp;
+                Console.WriteLine($"Contract Employee Added Successfully with ID: {empIdCounter}");
+
+                empIdCounter++;
+
+                Console.Write("Do you want to add another New Employee (yes/no) : ");
+                check = Console.ReadLine().Trim().ToLower();
+            } while (check == "yes");
+             
         }
         public void removeEmp()
         {
