@@ -1,0 +1,7 @@
+D:\New training\c-sharp\Employee_Mangement\bin\Release\Employee_Mangement.exe.config
+D:\New training\c-sharp\Employee_Mangement\bin\Release\Employee_Mangement.exe
+D:\New training\c-sharp\Employee_Mangement\bin\Release\Employee_Mangement.pdb
+D:\New training\c-sharp\Employee_Mangement\obj\Release\Employee_Mangement.csproj.AssemblyReference.cache
+D:\New training\c-sharp\Employee_Mangement\obj\Release\Employee_Mangement.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\Employee_Mangement\obj\Release\Employee_Mangement.exe
+D:\New training\c-sharp\Employee_Mangement\obj\Release\Employee_Mangement.pdb
