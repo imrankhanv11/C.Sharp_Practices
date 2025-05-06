@@ -1,0 +1,7 @@
+D:\New training\c-sharp\Interfaces_Learning\bin\Release\Interfaces_Learning.exe.config
+D:\New training\c-sharp\Interfaces_Learning\bin\Release\Interfaces_Learning.exe
+D:\New training\c-sharp\Interfaces_Learning\bin\Release\Interfaces_Learning.pdb
+D:\New training\c-sharp\Interfaces_Learning\obj\Release\Interfaces_Learning.csproj.AssemblyReference.cache
+D:\New training\c-sharp\Interfaces_Learning\obj\Release\Interfaces_Learning.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\Interfaces_Learning\obj\Release\Interfaces_Learning.exe
+D:\New training\c-sharp\Interfaces_Learning\obj\Release\Interfaces_Learning.pdb
