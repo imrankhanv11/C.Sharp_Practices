@@ -1,0 +1,7 @@
+D:\New training\c-sharp\FileHandling_WithOops\bin\Debug\FileHandling_WithOops.exe.config
+D:\New training\c-sharp\FileHandling_WithOops\bin\Debug\FileHandling_WithOops.exe
+D:\New training\c-sharp\FileHandling_WithOops\bin\Debug\FileHandling_WithOops.pdb
+D:\New training\c-sharp\FileHandling_WithOops\obj\Debug\FileHandling_WithOops.csproj.AssemblyReference.cache
+D:\New training\c-sharp\FileHandling_WithOops\obj\Debug\FileHandling_WithOops.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\FileHandling_WithOops\obj\Debug\FileHandling_WithOops.exe
+D:\New training\c-sharp\FileHandling_WithOops\obj\Debug\FileHandling_WithOops.pdb
