@@ -17,10 +17,14 @@ namespace RoomBookingMangement
 
             while (true)
             {
-                Console.WriteLine("Welcome to the Room Booking System");
-                Console.WriteLine("1. Login");
-                Console.WriteLine("2. Register");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine("===========================================");
+                Console.WriteLine("| Option | Description                   |");
+                Console.WriteLine("===========================================");
+                Console.WriteLine("|   1    | Login                          |");
+                Console.WriteLine("|   2    | Register                       |");
+                Console.WriteLine("|   3    | Exit                           |");
+                Console.WriteLine("===========================================");
+
                 Console.Write("Enter the operation code : ");
                 string choice = Console.ReadLine();
 
@@ -40,15 +44,22 @@ namespace RoomBookingMangement
                         Console.WriteLine($"Welcome, {loggedInUser.UserName}!");
                         while (true)
                         {
-                            Console.WriteLine("1. View Available Rooms");
-                            Console.WriteLine("2. Make a Booking");
-                            Console.WriteLine("3. Cancel a Booking");
+                            Console.WriteLine("===============================================");
+                            Console.WriteLine("| Option | Description                        |");
+                            Console.WriteLine("===============================================");
+                            Console.WriteLine("|   1    | View Available Rooms               |");
+                            Console.WriteLine("|   2    | Make a Booking                     |");
+                            Console.WriteLine("|   3    | Cancel a Booking                   |");
+
                             if (loggedInUser.IsAdmin)
                             {
-                                Console.WriteLine("4. Admin View Bookings");
-                                Console.WriteLine("5. Admin Manage Rooms");
+                                Console.WriteLine("|   4    | Admin View Bookings                |");
+                                Console.WriteLine("|   5    | Admin Manage Rooms                 |");
                             }
-                            Console.WriteLine("6. Logout");
+
+                            Console.WriteLine("|   6    | Logout                             |");
+                            Console.WriteLine("===============================================");
+
                             Console.Write("Enter the operation code : ");
                             string userChoice = Console.ReadLine();
 

@@ -29,6 +29,8 @@ namespace RoomBookingMangement
         public void RegisterUser(string username, string password, bool isAdmin = false)
         {
             users.Add(new User(username, password, isAdmin));
+            Console.WriteLine("Register sucessfully");
+            Console.WriteLine();
         }
 
         public User Login(string username, string password)
@@ -43,12 +45,26 @@ namespace RoomBookingMangement
 
         public void ViewAvailableRooms()
         {
-            Console.WriteLine("Available Rooms:");
+            Console.WriteLine("Available Rooms (Today):");
+            Console.WriteLine("=============================================");
+            Console.WriteLine("| Room Number | Room Type                   |");
+            Console.WriteLine("=============================================");
+
             foreach (var room in rooms)
             {
-                if (room.IsAvailable)
-                    Console.WriteLine($"Room {room.RoomNumber} - {room.RoomType}");
+                bool isBookedToday = bookings.Any(b =>
+                    b.Room.RoomNumber == room.RoomNumber &&
+                    DateTime.Today >= b.CheckInDate &&
+                    DateTime.Today < b.CheckOutDate);
+
+                if (!isBookedToday)
+                {
+                    Console.WriteLine($"| {room.RoomNumber,-12} | {room.RoomType,-26} |");
+                    Console.WriteLine("---------------------------------------------");
+                }
             }
+
+            Console.WriteLine();
         }
 
         public void MakeBooking(User user)
@@ -56,41 +72,51 @@ namespace RoomBookingMangement
             Console.WriteLine("Enter room number to book:");
             string inputroom = Console.ReadLine();
             int roomNumber = input.IntCheck(inputroom);
-            Room selectedRoom = rooms.Find(r => r.RoomNumber == roomNumber && r.IsAvailable);
 
-            if (selectedRoom != null)
+            Room selectedRoom = rooms.Find(r => r.RoomNumber == roomNumber);
+
+            if (selectedRoom == null)
             {
-                Console.WriteLine("Enter check-in date (yyyy-mm-dd):");
-                string inputcheckin = Console.ReadLine();
-                DateTime checkInDate = input.DateTimeCheck(inputcheckin);
+                Console.WriteLine("Room does not exist.");
+                return;
+            }
 
-                DateTime checkOutDate;
-                while (true)
+            Console.WriteLine("Enter check-in date (yyyy-mm-dd):");
+            string inputcheckin = Console.ReadLine();
+            DateTime checkInDate = input.DateTimeCheck(inputcheckin);
+
+            DateTime checkOutDate;
+            while (true)
+            {
+                Console.WriteLine("Enter check-out date (yyyy-mm-dd):");
+                string inputcheckout = Console.ReadLine();
+                checkOutDate = input.DateTimeCheck(inputcheckout);
+
+                if (checkOutDate > checkInDate)
                 {
-                    Console.WriteLine("Enter check-out date (yyyy-mm-dd):");
-                    string inputcheckout = Console.ReadLine();
-                    checkOutDate = input.DateTimeCheck(inputcheckout);
-
-                    if (checkOutDate > checkInDate)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Error: Check-out date must be after the check-in date. Please enter a valid check-out date.");
-                    }
+                    break;
                 }
+                else
+                {
+                    Console.WriteLine("Error: Check-out date must be after the check-in date. Please enter a valid check-out date.");
+                }
+            }
 
+            bool isRoomAvailable = !bookings.Any(b =>
+                b.Room.RoomNumber == roomNumber &&
+                ((checkInDate < b.CheckOutDate) && (checkOutDate > b.CheckInDate))
+            );
+
+            if (isRoomAvailable)
+            {
                 Booking newBooking = new Booking(user.UserName, selectedRoom, DateTime.Now, checkInDate, checkOutDate);
                 bookings.Add(newBooking);
-                selectedRoom.BookRoom();
-
                 Console.WriteLine($"Booking confirmed for {selectedRoom.RoomType} room {selectedRoom.RoomNumber}.");
                 Console.WriteLine($"Check-in: {checkInDate:yyyy-MM-dd}, Check-out: {checkOutDate:yyyy-MM-dd}");
             }
             else
             {
-                Console.WriteLine("Sorry, the room is either not available or doesn't exist.");
+                Console.WriteLine("Sorry, the room is already booked during the selected dates.");
             }
         }
 
@@ -98,27 +124,37 @@ namespace RoomBookingMangement
         {
             Console.WriteLine("Enter the room number of the booking you want to cancel:");
             int roomNumber = int.Parse(Console.ReadLine());
+
             var booking = bookings.Find(b => b.Room.RoomNumber == roomNumber && b.CustomerName == user.UserName);
 
             if (booking != null)
             {
-                booking.Room.CancelBooking();
                 bookings.Remove(booking);
                 Console.WriteLine("Booking canceled successfully.");
+                Console.WriteLine();
             }
             else
             {
                 Console.WriteLine("Booking not found.");
+                Console.WriteLine();
             }
         }
 
         public void AdminViewBookings()
         {
             Console.WriteLine("All Bookings:");
+            Console.WriteLine("==========================================================================");
+            Console.WriteLine("| Customer Name    | Room Number | Check-In Date | Check-Out Date     |");
+            Console.WriteLine("==========================================================================");
+
             foreach (var booking in bookings)
             {
-                Console.WriteLine($"{booking.CustomerName} booked Room {booking.Room.RoomNumber} from {booking.CheckInDate.ToShortDateString()} to {booking.CheckOutDate.ToShortDateString()}.");
+                Console.WriteLine($"| {booking.CustomerName,-17} | {booking.Room.RoomNumber,-12} | {booking.CheckInDate.ToShortDateString(),-14} | {booking.CheckOutDate.ToShortDateString(),-17} |");
             }
+
+            Console.WriteLine("==========================================================================");
+            Console.WriteLine();
+
         }
 
         public void AdminManageRooms()
@@ -141,6 +177,7 @@ namespace RoomBookingMangement
                     if (roomExists)
                     {
                         Console.WriteLine("Error: Room number already exists. Please enter a different room number.");
+                        Console.WriteLine();
                     }
                     else
                     {
@@ -162,12 +199,14 @@ namespace RoomBookingMangement
                     else
                     {
                         Console.WriteLine("invalid room type");
+                        Console.WriteLine();
                     }
                 }
                 
 
                 rooms.Add(new Room(roomNumber, roomType));
                 Console.WriteLine("Room added successfully.");
+                Console.WriteLine();
             }
 
             else if (choice == "2")
@@ -180,10 +219,12 @@ namespace RoomBookingMangement
                 {
                     rooms.Remove(roomToRemove);
                     Console.WriteLine("Room removed successfully.");
+                    Console.WriteLine();
                 }
                 else
                 {
                     Console.WriteLine("Room not found.");
+                    Console.WriteLine();
                 }
             }
         }
