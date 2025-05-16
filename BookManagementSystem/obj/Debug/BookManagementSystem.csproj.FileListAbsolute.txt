@@ -1,0 +1,7 @@
+D:\New training\c-sharp\BookManagementSystem\bin\Debug\BookManagementSystem.exe.config
+D:\New training\c-sharp\BookManagementSystem\bin\Debug\BookManagementSystem.exe
+D:\New training\c-sharp\BookManagementSystem\bin\Debug\BookManagementSystem.pdb
+D:\New training\c-sharp\BookManagementSystem\obj\Debug\BookManagementSystem.csproj.AssemblyReference.cache
+D:\New training\c-sharp\BookManagementSystem\obj\Debug\BookManagementSystem.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\BookManagementSystem\obj\Debug\BookManagementSystem.exe
+D:\New training\c-sharp\BookManagementSystem\obj\Debug\BookManagementSystem.pdb
