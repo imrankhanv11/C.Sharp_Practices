@@ -1,0 +1,14 @@
+D:\New training\c-sharp\StudentPerfomanceTracker\obj\Debug\StudentPerfomanceTracker.csproj.AssemblyReference.cache
+D:\New training\c-sharp\StudentPerfomanceTracker\obj\Debug\StudentPerfomanceTracker.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\StudentPerfomanceTracker\bin\Debug\StudentPerfomanceTracker.exe.config
+D:\New training\c-sharp\StudentPerfomanceTracker\bin\Debug\StudentPerfomanceTracker.exe
+D:\New training\c-sharp\StudentPerfomanceTracker\bin\Debug\StudentPerfomanceTracker.pdb
+D:\New training\c-sharp\StudentPerfomanceTracker\obj\Debug\StudentPerfomanceTracker.exe
+D:\New training\c-sharp\StudentPerfomanceTracker\obj\Debug\StudentPerfomanceTracker.pdb
+D:\New training\c-sharp\StudentPerfomanceTracker_ListMark\obj\Debug\StudentPerfomanceTracker.csproj.AssemblyReference.cache
+D:\New training\c-sharp\StudentPerfomanceTracker_ListMark\obj\Debug\StudentPerfomanceTracker.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\StudentPerfomanceTracker_ListMark\obj\Debug\StudentPerfomanceTracker.exe
+D:\New training\c-sharp\StudentPerfomanceTracker_ListMark\obj\Debug\StudentPerfomanceTracker.pdb
+D:\New training\c-sharp\StudentPerfomanceTracker_ListMark\bin\Debug\StudentPerfomanceTracker.exe.config
+D:\New training\c-sharp\StudentPerfomanceTracker_ListMark\bin\Debug\StudentPerfomanceTracker.exe
+D:\New training\c-sharp\StudentPerfomanceTracker_ListMark\bin\Debug\StudentPerfomanceTracker.pdb
