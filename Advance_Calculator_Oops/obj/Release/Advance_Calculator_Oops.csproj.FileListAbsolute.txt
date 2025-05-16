@@ -1,0 +1,7 @@
+D:\New training\c-sharp\Advance_Calculator_Oops\bin\Release\Advance_Calculator_Oops.exe.config
+D:\New training\c-sharp\Advance_Calculator_Oops\bin\Release\Advance_Calculator_Oops.exe
+D:\New training\c-sharp\Advance_Calculator_Oops\bin\Release\Advance_Calculator_Oops.pdb
+D:\New training\c-sharp\Advance_Calculator_Oops\obj\Release\Advance_Calculator_Oops.csproj.AssemblyReference.cache
+D:\New training\c-sharp\Advance_Calculator_Oops\obj\Release\Advance_Calculator_Oops.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\Advance_Calculator_Oops\obj\Release\Advance_Calculator_Oops.exe
+D:\New training\c-sharp\Advance_Calculator_Oops\obj\Release\Advance_Calculator_Oops.pdb

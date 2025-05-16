@@ -1,0 +1,7 @@
+D:\New training\c-sharp\Advance_MultiUserExpeseTraker_Oops\bin\Release\Advance_MultiUserExpeseTraker_Oops.exe.config
+D:\New training\c-sharp\Advance_MultiUserExpeseTraker_Oops\bin\Release\Advance_MultiUserExpeseTraker_Oops.exe
+D:\New training\c-sharp\Advance_MultiUserExpeseTraker_Oops\bin\Release\Advance_MultiUserExpeseTraker_Oops.pdb
+D:\New training\c-sharp\Advance_MultiUserExpeseTraker_Oops\obj\Release\Advance_MultiUserExpeseTraker_Oops.csproj.AssemblyReference.cache
+D:\New training\c-sharp\Advance_MultiUserExpeseTraker_Oops\obj\Release\Advance_MultiUserExpeseTraker_Oops.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\Advance_MultiUserExpeseTraker_Oops\obj\Release\Advance_MultiUserExpeseTraker_Oops.exe
+D:\New training\c-sharp\Advance_MultiUserExpeseTraker_Oops\obj\Release\Advance_MultiUserExpeseTraker_Oops.pdb
