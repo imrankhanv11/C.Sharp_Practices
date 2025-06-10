@@ -1,0 +1,7 @@
+D:\New training\c-sharp\Advance_GroceryApp_Oops\bin\Release\Advance_GroceryApp_Oops.exe.config
+D:\New training\c-sharp\Advance_GroceryApp_Oops\bin\Release\Advance_GroceryApp_Oops.exe
+D:\New training\c-sharp\Advance_GroceryApp_Oops\bin\Release\Advance_GroceryApp_Oops.pdb
+D:\New training\c-sharp\Advance_GroceryApp_Oops\obj\Release\Advance_GroceryApp_Oops.csproj.AssemblyReference.cache
+D:\New training\c-sharp\Advance_GroceryApp_Oops\obj\Release\Advance_GroceryApp_Oops.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\Advance_GroceryApp_Oops\obj\Release\Advance_GroceryApp_Oops.exe
+D:\New training\c-sharp\Advance_GroceryApp_Oops\obj\Release\Advance_GroceryApp_Oops.pdb
