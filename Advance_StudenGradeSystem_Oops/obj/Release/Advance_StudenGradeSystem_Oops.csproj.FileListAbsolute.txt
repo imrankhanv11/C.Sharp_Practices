@@ -1,0 +1,7 @@
+D:\New training\c-sharp\Advance_StudenGradeSystem_Oops\obj\Release\Advance_StudenGradeSystem_Oops.csproj.AssemblyReference.cache
+D:\New training\c-sharp\Advance_StudenGradeSystem_Oops\obj\Release\Advance_StudenGradeSystem_Oops.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\Advance_StudenGradeSystem_Oops\bin\Release\Advance_StudenGradeSystem_Oops.exe.config
+D:\New training\c-sharp\Advance_StudenGradeSystem_Oops\bin\Release\Advance_StudenGradeSystem_Oops.exe
+D:\New training\c-sharp\Advance_StudenGradeSystem_Oops\bin\Release\Advance_StudenGradeSystem_Oops.pdb
+D:\New training\c-sharp\Advance_StudenGradeSystem_Oops\obj\Release\Advance_StudenGradeSystem_Oops.exe
+D:\New training\c-sharp\Advance_StudenGradeSystem_Oops\obj\Release\Advance_StudenGradeSystem_Oops.pdb
