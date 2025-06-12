@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces_Learning
 {
-    class Person
+    public class Person
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,7 +16,7 @@ namespace Interfaces_Learning
             Name = name;
         }
     }
-    class Student : Person
+    public class Student : Person
     {
         public string Grade { get; set; }
         public Student(int id, string name, string grade)
