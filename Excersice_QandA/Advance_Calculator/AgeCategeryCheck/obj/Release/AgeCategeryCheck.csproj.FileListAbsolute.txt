@@ -1,0 +1,7 @@
+D:\New training\c-sharp\AgeCategeryCheck\bin\Release\AgeCategeryCheck.exe.config
+D:\New training\c-sharp\AgeCategeryCheck\bin\Release\AgeCategeryCheck.exe
+D:\New training\c-sharp\AgeCategeryCheck\bin\Release\AgeCategeryCheck.pdb
+D:\New training\c-sharp\AgeCategeryCheck\obj\Release\AgeCategeryCheck.csproj.AssemblyReference.cache
+D:\New training\c-sharp\AgeCategeryCheck\obj\Release\AgeCategeryCheck.csproj.CoreCompileInputs.cache
+D:\New training\c-sharp\AgeCategeryCheck\obj\Release\AgeCategeryCheck.exe
+D:\New training\c-sharp\AgeCategeryCheck\obj\Release\AgeCategeryCheck.pdb
