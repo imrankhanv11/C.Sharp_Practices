@@ -1,0 +1,2 @@
+D:\New training\c-sharp\Grocesery\obj\Release\Grocesery.csproj.AssemblyReference.cache
+D:\New training\c-sharp\Grocesery\obj\Release\Grocesery.csproj.CoreCompileInputs.cache
